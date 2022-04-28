@@ -147,4 +147,25 @@ public class mainFX extends Application {
         return vbox;
     }   // End createCenter
     
+    // Start createRight
+    private VBox createRight() {
+        // "Customer Bill ", Name and amout of the bill
+        // Use VBox named vbox to hold everything for the right pane
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(0, 20, 0, 20));
+        vbox.setMinWidth(250);
+        vbox.setSpacing(10.0);
+        vbox.setAlignment(Pos.TOP_LEFT);
+        
+        // Use labels to display "Customer Bill", name and amount to pay
+        // These will be filled in with more info when the [Compute] button is
+        // clicked
+        lblCustomerBill = new Label("Customer Bill");
+        lblCustomerName = new Label("Name: ");
+        lblPleasePay = new Label("Please Pay: ");
+        vbox.getChildren().addAll(lblCustomerBill, lblCustomerName, lblPleasePay);
+        
+        return vbox;
+    }   // End createRight
+    
 }   // End mainFX
