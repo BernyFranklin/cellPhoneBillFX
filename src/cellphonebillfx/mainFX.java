@@ -9,6 +9,7 @@
 
 package cellphonebillfx;
 
+// Import everything we need
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -98,15 +99,15 @@ public class mainFX extends Application {
         vbox.setPadding(new Insets(0, 20, 0 ,20));
         
         // Use a Label control to hold the text that will be displayed 
-        lblPlansAndPrices = new Label(
-        "Plans and Prices\n"
-                + "--------------------\n"
-                + "A =  0 GB $50.00\n"
-                + "B =  2 GB $60.00\n"
-                + "C =  4 GB $70.00\n"
-                + "D = 10 GB $90.00\n"
-                + "+ $15.00/GB over plan limit"
-        );
+        lblPlansAndPrices = new Label(    // Utilized triple quote text block
+                  """
+                  Plans and Prices
+                  --------------------
+                  A =  0 GB $50.00
+                  B =  2 GB $60.00
+                  C =  4 GB $70.00
+                  D = 10 GB $90.00
+                  + $15.00/GB over plan limit""");   
         
         // Put label in the VBox
         vbox.getChildren().add(lblPlansAndPrices);
@@ -292,7 +293,7 @@ public class mainFX extends Application {
             bill = baseRate + (GBextra * PRICE_PER_GB);
         }
         
-        if (validPlan)
+        if (validPlan)   // Only display bill if valid plan detected
         lblPleasePay.setText(String.format("Please Pay: $%.2f", bill));
         
     }   // End of compute
