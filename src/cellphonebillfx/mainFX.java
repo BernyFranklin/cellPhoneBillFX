@@ -38,7 +38,7 @@ public class mainFX extends Application {
     TextField txtPlan;       // Input the plan
     Label lblPlan;           // Prompt at right for plan
     TextField txtGBused;     // Input for GB used
-    Label lbltxtGBused;      // Prompt at right for GB used
+    Label lblGBused;      // Prompt at right for GB used
     
     // Controls for right pane
     Label lblCustomerBill;
@@ -105,4 +105,46 @@ public class mainFX extends Application {
         
         return vbox;
     }   // End of createLeft
+    
+    // Start createCenter
+    private VBox createCenter() {
+        // Use VBox named vbox to hold everything for the center pane
+        VBox vbox = new VBox();
+        vbox.setSpacing(10.0);
+        
+        // Inside vbox create a Label for the title
+        lblCustomerData = new Label("Customer Data");
+        
+        // Inside the vbox, create ANOTHER vbox named vbox1 to hold prompt
+        // "Name" and a textField for the user to type a name
+        VBox vbox1 = new VBox();
+        lblName = new Label("  Name");
+        txtName = new TextField();
+        txtName.setPrefSize(200, 20);
+        txtName.setMaxWidth(200);
+        vbox1.getChildren().addAll(lblName, txtName);
+        
+        // Also inside vbox, use HBox named hbox2 with a Label and TExtField
+        // to get the plan
+        HBox hbox2 = new HBox();
+        txtPlan = new TextField();
+        txtPlan.setPrefSize(40, 20);
+        lblPlan = new Label("  Plan  (A-D)");   // lblPlan is global
+        hbox2.getChildren().addAll(txtPlan, lblPlan);
+        
+        // Also indide vbox, one more HBox with a Label and TextField to get
+        // GB used 
+        HBox hbox3 = new HBox();
+        txtGBused = new TextField();
+        txtGBused.setPrefSize(40, 20);
+        lblGBused = new Label("  GB Used"); // lblGBused is global
+        hbox3.getChildren().addAll(txtGBused, lblGBused);
+        
+        // Put the title "Customer Data" and inputs for Name, Plan and GB used
+        // in vbox
+        vbox.getChildren().addAll (lblCustomerData, vbox1, hbox2, hbox3);
+        
+        return vbox;
+    }   // End createCenter
+    
 }   // End mainFX
