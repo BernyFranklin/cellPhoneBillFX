@@ -51,10 +51,10 @@ public class mainFX extends Application {
     Button btnExit;
     
     // Constant for GB over limit
-    final double PRICE_PER_GB = 15.00
+    final double PRICE_PER_GB = 15.00;
             
     // Start start
-    @Override
+    @Override        
     public void start(Stage primaryStage) {
         // 1. Use a border pane to layout the scene on the stage
         BorderPane root = new BorderPane();
@@ -63,6 +63,14 @@ public class mainFX extends Application {
         root.setCenter(createCenter());   // Contains VBox control
         root.setRight(createRight());     // Contains VBox control
         root.setBottom(createBottom());   // Contains HBox control
+        
+        // 2. Create a JavaFX scene that holds the borderPane, stored in root
+        Scene scene = new Scene(root);
+        
+        // 3. The primaryStage holds the scene that is to be displayed
+        primaryStage.setTitle("JavaFX Cell Phone Bill");   // Title at top
+        primaryStage.setScene(scene);   // Put scene on primaryStage
+        primaryStage.show();            // Display the primaryStage
     }   // End start
 
     // Start PSV main
