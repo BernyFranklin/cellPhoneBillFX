@@ -209,4 +209,13 @@ public class mainFX extends Application {
         return hbox;
     }   // End createBottom
     
+    // Start of compute
+    private void compute() {
+        
+    }   // End of compute
+    
+    // Start of clear
+    private void clear() {
+        
+    }   // End of clear
 }   // End mainFX
