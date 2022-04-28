@@ -211,6 +211,89 @@ public class mainFX extends Application {
     
     // Start of compute
     private void compute() {
+        char plan = ' ';   // Empty Char
+        String planString;
+        double GBused = 0;
+        double GBextra;
+        double baseRate = 0;
+        double baseGB = 0;
+        double bill;
+        boolean validPlan = true;   // Assume good plan selection
+        
+        // Start with initial values for labels
+        lblPleasePay.setText("Please Pay: ");
+        lblPlan.setText("  Plan  (A-D)");
+        lblGBused.setText("  GB used");
+        
+        // Place customers name in the label that is on the right pane
+        lblCustomerName.setText("Name: " + txtName.getText());
+        
+        // Get the GB used from the TextField name txtGBused
+        // Check for valid numerical input
+        try {
+            // Set GB to zero if no input
+            if (txtGBused.getText().trim().equals(""))
+                txtGBused.setText("0.0");
+            // Get text, parse to double and store in GBused
+            GBused = Double.parseDouble(txtGBused.getText());
+            
+            // Get rid of negative numbers
+            if (GBused < 0)
+                lblGBused.setText("  Input must be positive");
+        }   // End of try
+        catch (NumberFormatException e) {
+            lblGBused.setText("  Input must be number");
+        }   // End of NumberFormatException
+        
+        // Get Plan info from the Text Field txtPlan
+        // Convert txtPlan to upper case
+        planString = txtPlan.getText().toUpperCase();
+        // Take first char
+        plan = planString.charAt(0);
+        // Check if Valid plan
+        if (plan != 'A' && plan != 'B' && plan != 'C' && plan != 'D') {
+            lblPlan.setText("  Plan must be (A-D)");
+            validPlan = false;
+        }
+        
+        // Set Base Rate and GB for each plan
+        switch (plan) {
+            case 'A':
+                baseRate = 50.0;
+                baseGB = 0.0;
+                validPlan = true;
+                break;
+            case 'B':
+                baseRate = 60.0;
+                baseGB = 2.0;
+                validPlan = true;
+                break;
+            case 'C':
+                baseRate = 70.0;
+                baseGB = 4.0;
+                validPlan = true;
+                break;
+            case 'D':
+                baseRate = 90.0;
+                baseGB = 10.0;
+                validPlan = true;
+                break;
+            default:
+                break;
+        }   // End of switch
+        
+        // Compute Bill
+        GBextra = GBused - baseGB;
+        
+        if (GBextra <= 0) {
+            bill = baseRate;
+        }
+        else {
+            bill = baseRate + (GBextra * PRICE_PER_GB);
+        }
+        
+        if (validPlan)
+        lblPleasePay.setText(String.format("Please Pay: $%.2f", bill));
         
     }   // End of compute
     
@@ -220,5 +303,9 @@ public class mainFX extends Application {
         txtName.setText(" ");
         txtPlan.setText(" ");
         txtGBused.setText(" ");
+        lblGBused.setText("  GB used");
+        lblCustomerName.setText(" ");
+        lblPlan.setText("  Plan  (A-D)");
+        lblPleasePay.setText("Please Pay:");
     }   // End of clear
 }   // End mainFX
