@@ -168,4 +168,37 @@ public class mainFX extends Application {
         return vbox;
     }   // End createRight
     
+    // Start createBottom
+    private HBox createBottom() {
+        // This method creates 3 buttons [Compute], [Clear], and [Exit]
+        // After the buttons are created, they are added to an HBox used in
+        // The borderPane
+        
+        // Use HBox named hbox to hold everything in the bottom pane
+        HBox hbox = new HBox();
+        hbox.setSpacing(20.0);
+        hbox.setPrefHeight(50);
+        hbox.setAlignment(Pos.CENTER);
+        
+        // Compute button
+        btnCompute = new Button("Compute");          // Button created
+        btnCompute.setPrefSize(110, 20);             // Set size
+        btnCompute.setOnAction( e -> compute());     // Event handler
+        
+        // Clear button
+        btnClear = new Button("Clear");              // Button created
+        btnClear.setPrefSize(110, 20);               // Set size
+        btnClear.setOnAction( e -> clear());         // Event handler
+        
+        // Exit button
+        btnExit = new Button("Exit");                // Button Created
+        btnExit.setPrefSize(110, 20);                // Set size
+        btnExit.setOnAction( e -> System.exit(0));   // Event handler
+        
+        // Add each button the the HBox
+        hbox.getChildren().addAll(btnCompute, btnClear, btnExit);
+        
+        return hbox;
+    }   // End createBottom
+    
 }   // End mainFX
