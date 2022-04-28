@@ -216,6 +216,9 @@ public class mainFX extends Application {
     
     // Start of clear
     private void clear() {
-        
+        // Clear Contents of all textFields
+        txtName.setText(" ");
+        txtPlan.setText(" ");
+        txtGBused.setText(" ");
     }   // End of clear
 }   // End mainFX
